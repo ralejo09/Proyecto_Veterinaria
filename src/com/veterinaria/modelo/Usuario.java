@@ -17,6 +17,8 @@ public class Usuario implements Serializable{
     private String contrasenia;
     private Rol rol;
     private String nombre;
+    
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    
 
     public Usuario(String correo, String contrasenia, Rol rol, String nombre) {
         this.correo = correo;
@@ -25,8 +27,7 @@ public class Usuario implements Serializable{
         this.nombre = nombre;
     }
 
-
-    
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
 
     public String getCorreo() {
         return correo;
@@ -60,6 +61,8 @@ public class Usuario implements Serializable{
         this.nombre = nombre;
     }
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    
+    
     @Override
     public String toString() {
         return "Usuario{" + "correo=" + correo + ", contrasenia=" + contrasenia + ", rol=" + rol + ", nombre=" + nombre + '}';

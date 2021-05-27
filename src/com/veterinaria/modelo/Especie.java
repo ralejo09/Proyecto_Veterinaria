@@ -14,6 +14,7 @@ import java.io.Serializable;
 public class Especie implements Serializable{
     private byte codigoEspecie;
     private String nombre;
+    
 /////////////////////////////////////////////////////////////////////
 
     public Especie(byte codigoEspecie, String nombre) {

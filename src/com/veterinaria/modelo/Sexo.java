@@ -14,6 +14,7 @@ import java.io.Serializable;
 public class Sexo implements Serializable{
     private byte codigoSexo;
     private String nombre;
+    
 /////////////////////////////////////////////////////////////////////
 
     public Sexo(byte codigoSexo, String nombre) {

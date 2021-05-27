@@ -14,7 +14,10 @@ import com.veterinaria.modelo.Sexo;
 import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+import javax.swing.JOptionPane;
+import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -38,8 +41,14 @@ public class ControladorVeterinaria {
         inicializarRaza((byte)1);
         inicializarServicio();
         inicializarMascotas();
+        escribirFichero();
+//        LeerFichero();
     }
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    
+    //Arreglos de El Sexo,Especie,Raza,Servicio
+    
     private void inicializarSexo()
     {
         sexos= new Sexo[2];
@@ -150,6 +159,8 @@ public class ControladorVeterinaria {
     
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
     
+    //Se inicializa mascota quemada
+    
     private void inicializarMascotas()
     {
 //        servicios[0]= new RegistroServicio("dsf",(double)464 , "jahdas", new Sexo((byte)1, "hembra"), new Especie((byte)2, "gato"), new Raza((byte)2, "persa"),(byte)45);
@@ -158,6 +169,8 @@ public class ControladorVeterinaria {
     }
     
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    //Metodos para adicionar una mascota y eliminar una mascota
     
     public String adicionarMascota(RegistroServicio regser)
     {
@@ -173,8 +186,14 @@ public class ControladorVeterinaria {
         {
             return "No se pueden adicionar mas servicios";
         }
-    }
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////    
+    }    
+    
+    public void eliminarMascota(int pos)
+    {
+        contadorServicios--;
+        JOptionPane.showMessageDialog(null, "Mascota Borrada");
+    }        
+    
     public  RegistroServicio verificarMascota(String fecha, String codigoMascota, String nombre, Sexo sexo, Especie especie, Raza raza, Servicio servicio) throws VeterinariaExcepcion{
             if (nombre==null || nombre.equals("")|| codigoMascota==null || codigoMascota.equals(""))
             {
@@ -192,8 +211,12 @@ public class ControladorVeterinaria {
 
 
                 return new RegistroServicio(fecha, codigoMascota, nombre, sexo, especie, raza, servicio);
-}
-
+    }
+    
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
+    
+    //Metodos de validacion de nombre y fecha y escribirFichero
+    
     private boolean validarNombre(String nombre) {
 
             Pattern pattern = Pattern.compile("[a-zA-Z]+\\.?");
@@ -203,28 +226,42 @@ public class ControladorVeterinaria {
         }    
     
     private boolean validarFecha(String fecha) {
-//AAAA-MM-DD
+    //AAAA-MM-DD
             Pattern pattern = Pattern.compile("^\\d{4}-\\d{2}-\\d{2}$");
             Matcher matcher = pattern.matcher(fecha);
 
                   return matcher.find() ;
         }
     
-    
+    public static void escribirFichero()
+    {
+        FileWriter fichero=null;
+        try {
+            fichero = new FileWriter("src/prueba.txt");
+            PrintWriter printW=new PrintWriter(fichero);
+            printW.println("hola");
+            printW.println("hola");
+            
+            for (int i=0; i<200; i++) 
+            {
+                printW.println("saludo "+ i);
+            }
+            
+        } catch (IOException ex) {
+            System.out.println("Error al crear el archivo: "+ex.getMessage());
+        } finally {
+            try {
+                fichero.close();
+            } catch (IOException ex) {
+                System.out.println("Error al cerrar el archivo: "+ex.getMessage());
+            }
+        }
+        
+    }
+     
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////    
     
-    
-////    public double calcularPrecio()
-////    {
-////        double salario=0;
-////        for (RegistroServicio regser : this.servicios)
-////        {
-////            if(regser instanceof Servicio)
-////            {
-////                regser.calcularPrecio(salario);
-////            }
-////        }
-////    }
+    //Guetters and Setters
 
     public RegistroServicio[] getRegServicios() {
         return regServicios;
@@ -273,16 +310,96 @@ public class ControladorVeterinaria {
     public void setServicio(Servicio[] servicio) {
         this.servicio = servicio;
     }
-
-    
 }
 
-    
+////////////////////////////////////////////////////////////////////////////////    
 
+//Pruebas de metodos 
 
-    
+    //metodo para calcular precio
 
+////////    public double calcularPrecio()
+////////    {
+////////        double salario=0;
+////////        for (RegistroServicio regser : this.servicios)
+////////        {
+////////            if(regser instanceof Servicio)
+////////            {
+////////                regser.calcularPrecio(salario);
+////////            }
+////////        }
+////////    }
     
+    // metodo para leer fichero
+    
+////////    public void LeerFichero()
+////////    {
+////////        FileReader fr=null;
+////////        try 
+////////        {
+////////            File archivo=new File("src/prueba.txt");
+////////            fr = new FileReader(archivo);
+////////            BufferedReader br = new BufferedReader(fr);
+////////            
+////////            String linea;
+////////            String[] datos;
+////////            while ((linea = br.readLine()) != null) 
+////////            {
+////////                datos = linea.split(":");
+////////                if (Boolean.valueOf(datos[0]) && datos.length==3) 
+////////                {
+////////                    if (datos[2].equals("1")) 
+////////                    {
+////////                        Servicio.add(new Servicio((datos[0]), datos[1], datos[2]));
+////////                    } 
+////////                    else if (datos[2].equals("2")) 
+////////                    {
+////////                        Servicio.add(new Servicio((datos[0]), datos[1],datos[3]));
+////////                    }
+////////                }
+////////            }
+////////        }
+////////       catch (Exception e) 
+////////        {
+////////            e.printStackTrace();
+////////        } 
+////////        finally 
+////////        {
+////////            try 
+////////            {
+////////                if (null != fr) 
+////////                {
+////////                    fr.close();
+////////                }
+////////            } 
+////////            catch (Exception e2) 
+////////            {
+////////                e2.printStackTrace();
+////////            }
+////////        }
+////////    }        
+//////            
+//////            
+//////            
+////////            while ((linea=br.readLine())!=null)
+////////            {
+////////                System.out.println(linea);
+////////            }
+////////            
+////////        }   catch (Exception ex) 
+////////            {
+////////            System.out.println("Error archivo inexistente");
+////////            } 
+////////            finally 
+////////            {
+////////            try 
+////////            {
+////////                fr.close();
+////////            } catch (Exception ex) 
+////////            {
+////////                System.out.println("Error al cerrar el archivo ");
+////////            }   
+////////            }
     
     
  

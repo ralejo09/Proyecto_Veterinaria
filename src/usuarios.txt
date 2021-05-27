@@ -1,0 +1,3 @@
+rloaiza@umanizales.edu.co'123456'0'Administrador \n"+"             Roger Loaiza
+rcarmona@umanizales.edu.co'654321'1'Raul Alejandro Veterinario \n"+"         Raul Carmona
+carloaiza@umanizales.edu.co'123456'1'Veterinario \n"+"         Carlos Loaiza

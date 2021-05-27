@@ -14,13 +14,16 @@ import java.io.Serializable;
 public class Rol implements Serializable {
     private byte codigo;
     private String descripcion; 
-    
+
+/////////////////////////////////////////////////////////////////////    
     
     public Rol(byte codigo, String descripcion) {
         this.codigo = codigo;
         this.descripcion = descripcion;
     }
 
+/////////////////////////////////////////////////////////////////////    
+    
     public byte getCodigo() {
         return codigo;
     }
@@ -37,6 +40,8 @@ public class Rol implements Serializable {
         this.descripcion = descripcion;
     }
 
+/////////////////////////////////////////////////////////////////////    
+    
     @Override
     public String toString() {
         return "Rol{" + "codigo=" + codigo + ", "

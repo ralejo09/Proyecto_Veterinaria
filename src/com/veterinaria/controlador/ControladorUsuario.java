@@ -104,7 +104,7 @@ public class ControladorUsuario {
 //
 //        try 
 //        {
-//            archivo = new File("C:\\Users\\ALEJO CARMONA\\Documents\\📗📚💻✍ESTUDIO✍💻📚📗\\UNIVERSIDAD DE MANIZALES\\Semestre 2\\PROGRAMACION - 1\\Nomina\\usuarios.txt");
+//            archivo = new File("C:\\Users\\ALEJO CARMONA\\Documents\\usuarios.txt");
 //            fr = new FileReader(archivo);
 //            br = new BufferedReader(fr);
 //
@@ -117,11 +117,11 @@ public class ControladorUsuario {
 //                {
 //                    if (datos[2].equals("1")) 
 //                    {
-//                        usuarios.add(new Usuario(datos[0], datos[1], roles[0]));
+//                        usuarios.add(new Usuario(datos[0], datos[1], roles[0],datos[3]));
 //                    } 
 //                    else if (datos[2].equals("2")) 
 //                    {
-//                        usuarios.add(new Usuario(datos[0], datos[1], roles[1]),"");
+//                        usuarios.add(new Usuario(datos[0], datos[1], roles[1],datos[3]));
 //                    }
 //                }
 //            }

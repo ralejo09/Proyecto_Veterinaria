@@ -9,6 +9,7 @@ package com.veterinaria.vista;
  *
  * @author ALEJO CARMONA
  */
+import com.veterinaria.controlador.ControladorVeterinaria;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -18,8 +19,9 @@ import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import java.awt.Color;
 import java.awt.EventQueue;
+import javax.swing.JInternalFrame;
 
-public class PieChartEx extends JFrame {
+public class PieChartEx extends JInternalFrame {
 
     public PieChartEx() {
 
@@ -37,20 +39,19 @@ public class PieChartEx extends JFrame {
         add(chartPanel);
 
         pack();
-        setTitle("Pie chart");
-        setLocationRelativeTo(null);
+        setTitle("Gracica Servicio");
+//        setLocationRelativeTo(null);  
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
     }
 
     private DefaultPieDataset createDataset() {
 
         DefaultPieDataset dataset = new DefaultPieDataset();
-        dataset.setValue("Apache", 52);
-        dataset.setValue("Nginx", 31);
-        dataset.setValue("IIS", 12);
-        dataset.setValue("LiteSpeed", 2);
-        dataset.setValue("Google server", 1);
-        dataset.setValue("Others", 2);
+        dataset.setValue("Baño", 25);
+        dataset.setValue("Consulta Medica", 27);
+        dataset.setValue("Estetica", 24);
+        dataset.setValue("Desparasitacion", 24);
 
         return dataset;
     }
@@ -65,12 +66,12 @@ public class PieChartEx extends JFrame {
         return pieChart;
     }
 
-    public static void main(String[] args) {
-
-        EventQueue.invokeLater(() -> {
-
-            PieChartEx ex = new PieChartEx();
-            ex.setVisible(true);
-        });
-    }
+//    public static void main(String[] args) {
+//
+//        EventQueue.invokeLater(() -> {
+//
+//            PieChartEx ex = new PieChartEx();
+//            ex.setVisible(true);
+//        });
+//    }
 }

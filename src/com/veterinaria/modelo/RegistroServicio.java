@@ -15,11 +15,11 @@ public class RegistroServicio extends Mascota implements Serializable{
     private String fecha;
     
 /////////////////////////////////////////////////////////////////////
+   
     public RegistroServicio(String fecha, String codigoMascota, String nombre, Sexo sexo, Especie especie, Raza raza, Servicio servicio) {
         super(codigoMascota, nombre, sexo, especie, raza, servicio);
         this.fecha = fecha;
     }
-   
     
 /////////////////////////////////////////////////////////////////////
 

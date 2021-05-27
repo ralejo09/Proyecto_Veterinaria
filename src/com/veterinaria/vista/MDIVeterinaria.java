@@ -15,27 +15,46 @@ import com.veterinaria.modelo.RegistroServicio;
 import com.veterinaria.modelo.Servicio;
 import com.veterinaria.modelo.Sexo;
 import com.veterinaria.modelo.Usuario;
+import java.awt.Color;
 import java.beans.PropertyVetoException;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.DefaultPieDataset;
 
 /**
  *
  * @author ALEJO CARMONA
  */
 public class MDIVeterinaria extends javax.swing.JFrame {
-    DefaultTableModel model2= new DefaultTableModel();
+    DefaultTableModel model= new DefaultTableModel();
     private ControladorUsuario controlUsuarios;
     private Usuario usuarioAutenticado;
     private ControladorVeterinaria controlVeterinaria;
     private RegistroServicio mascotaAutenticicada;
     
+    //graficos
+    BarChartEx grafico = new BarChartEx();
+    PieChartEx grafico1 = new PieChartEx();
+    JFrame frame= new JFrame("qwqwqwqwqwqwqwq");
     /**
      * Creates new form MDIVeterinaria
      */
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
     public MDIVeterinaria() {
         initComponents();       //Crean todas las instancias
         controladorEstadoMenus();
@@ -43,6 +62,7 @@ public class MDIVeterinaria extends javax.swing.JFrame {
         controlVeterinaria = new ControladorVeterinaria();
         txtCorreo.setText("rloaiza@umanizales.edu.co");
         txtContrasenia.setText("123456");
+        
         llenarMascotas();
         
         controlVeterinaria= new ControladorVeterinaria();
@@ -50,8 +70,55 @@ public class MDIVeterinaria extends javax.swing.JFrame {
         llenarComboEspecies();
         llenarCombosRazas();
         llenarCombosServicios();
+        
+        //Grafico especie
+        grafico.setIconifiable(true);
+        grafico.setClosable(true);
+        grafico.setMaximizable(true);
+        grafico.setResizable(true);
+        grafico.setDefaultCloseOperation(HIDE_ON_CLOSE);
+        desktopPane.add(grafico);
+        
+        frame.setSize(500, 270);
+        frame.setLocationRelativeTo(getRootPane());
+        this.setLocationRelativeTo(getRootPane());
+        
+        //grafico servicios
+        grafico1.setIconifiable(true);
+        grafico1.setClosable(true);
+        grafico1.setMaximizable(true);
+        grafico1.setResizable(true);
+        grafico1.setDefaultCloseOperation(HIDE_ON_CLOSE);
+        desktopPane.add(grafico1);
+        
     }
+    
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////    
+    
+//Graficas
+//    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) 
+//    {
+//        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+//        dataset.addValue(1.0, "Row 1", "Column 1");
+//        dataset.addValue(5.0, "Row 1", "Column 2");
+//        dataset.addValue(3.0, "Row 1", "Column 3");
+//        dataset.addValue(2.0, "Row 2", "Column 1");
+//        dataset.addValue(3.0, "Row 2", "Column 2");
+//        dataset.addValue(2.0, "Row 2", "Column 3");
+//        dataset.addValue(10.0,"Row 3", "Column 4");
+//        dataset.addValue(10.0,"Row 3", "Column 4"); 
+//        return dataset;
+//        
+//        JFreeChart chart = ChartFactory.createBarChart("Ejemplo básico para Linea de Codigo", "Categorías", "Valores", dataset, PlotOrientation.VERTICAL.VERTICAL, true, true, true);
+//        ChartPanel chartPanel = new ChartPanel(chart, false);
+//        frame.setContentPane(chartPanel);
+//        frame.setVisible(true);
+//    } 
+    
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    //combos de los arreglos
+    
     private void llenarCombosSexos()
     {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cmbSexoMascota.getModel();
@@ -100,16 +167,19 @@ public class MDIVeterinaria extends javax.swing.JFrame {
     }
    
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////            
-            
+    
+    //Control de los estados de los menus, sgun su cargo
     public void controladorEstadoMenus()
     {
         menuListarMascotas.setEnabled(false);
         menuAgregarMascota.setEnabled(false);
-        menuActualizarServicio.setEnabled(false);
+        menuGraficoServicio.setEnabled(false);
+        
         
         menuListarMascotas.setVisible(false);
         menuAgregarMascota.setVisible(false);
-        menuActualizarServicio.setVisible(false);
+        menuGraficoServicio.setVisible(false);
+        
         
         if(usuarioAutenticado!=null)
         {
@@ -118,19 +188,26 @@ public class MDIVeterinaria extends javax.swing.JFrame {
                 case 1:
                     menuListarMascotas.setEnabled(true);
                     menuAgregarMascota.setEnabled(true);
-                    menuActualizarServicio.setEnabled(true);
+                    menuGraficoServicio.setEnabled(true);
                     
                     menuListarMascotas.setVisible(true);
                     menuAgregarMascota.setVisible(true);
-                    menuActualizarServicio.setVisible(true);
+                    menuGraficoServicio.setVisible(true);
                     break;
                 case 2:
                     menuListarMascotas.setEnabled(true);
+                    menuGraficoServicio.setEnabled(true);                   
                     
                     menuListarMascotas.setVisible(true);
+                    menuGraficoServicio.setVisible(true);                  
                     break;
             }
             
+            }
+        else
+        {
+            
+        
         }
     
     }
@@ -144,6 +221,9 @@ public class MDIVeterinaria extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
         desktopPane = new javax.swing.JDesktopPane();
         jifLogin = new javax.swing.JInternalFrame();
         lblUsuario = new javax.swing.JLabel();
@@ -158,7 +238,6 @@ public class MDIVeterinaria extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         btnEliminar = new javax.swing.JButton();
         btnGraficoServicio = new javax.swing.JButton();
-        btnGraficaEspecie = new javax.swing.JButton();
         jifRegistrarMasota = new javax.swing.JInternalFrame();
         btmRegistrar = new javax.swing.JButton();
         jlbFecha = new javax.swing.JLabel();
@@ -180,8 +259,14 @@ public class MDIVeterinaria extends javax.swing.JFrame {
         menuInicio = new javax.swing.JMenu();
         menuListarMascotas = new javax.swing.JMenuItem();
         menuAgregarMascota = new javax.swing.JMenuItem();
-        menuActualizarServicio = new javax.swing.JMenuItem();
+        menuGraficoServicio = new javax.swing.JMenuItem();
         menuSalir = new javax.swing.JMenuItem();
+
+        jMenu1.setText("File");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -274,7 +359,7 @@ public class MDIVeterinaria extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Fecha", "Codigo Mascota", "Nombre", "Sexo", "Especie", "Raza", "Nombre y Precio"
+                "Fecha", "Codigo Mascota", "Nombre", "Sexo", "Especie", "Raza", "Servicio y Precio"
             }
         ) {
             Class[] types = new Class [] {
@@ -295,6 +380,14 @@ public class MDIVeterinaria extends javax.swing.JFrame {
         tblMascotas.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         tblMascotas.getTableHeader().setResizingAllowed(false);
         tblMascotas.getTableHeader().setReorderingAllowed(false);
+        tblMascotas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tblMascotasKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tblMascotasKeyReleased(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblMascotas);
         if (tblMascotas.getColumnModel().getColumnCount() > 0) {
             tblMascotas.getColumnModel().getColumn(0).setResizable(false);
@@ -326,9 +419,11 @@ public class MDIVeterinaria extends javax.swing.JFrame {
 
         btnGraficoServicio.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnGraficoServicio.setText("Grafico de Servicios");
-
-        btnGraficaEspecie.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnGraficaEspecie.setText("Grafica Especie");
+        btnGraficoServicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGraficoServicioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jifListarMascotasLayout = new javax.swing.GroupLayout(jifListarMascotas.getContentPane());
         jifListarMascotas.getContentPane().setLayout(jifListarMascotasLayout);
@@ -341,18 +436,16 @@ public class MDIVeterinaria extends javax.swing.JFrame {
                         .addComponent(jScrollPane1)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jifListarMascotasLayout.createSequentialGroup()
-                        .addGap(0, 120, Short.MAX_VALUE)
+                        .addGap(0, 121, Short.MAX_VALUE)
                         .addGroup(jifListarMascotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jifListarMascotasLayout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(407, 407, 407))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jifListarMascotasLayout.createSequentialGroup()
                                 .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(100, 100, 100)
-                                .addComponent(btnGraficaEspecie, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(87, 87, 87)
+                                .addGap(363, 363, 363)
                                 .addComponent(btnGraficoServicio)
-                                .addGap(125, 125, 125))))))
+                                .addGap(127, 127, 127))))))
         );
         jifListarMascotasLayout.setVerticalGroup(
             jifListarMascotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -361,12 +454,11 @@ public class MDIVeterinaria extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addGap(45, 45, 45)
                 .addGroup(jifListarMascotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGraficoServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnGraficaEspecie, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(39, Short.MAX_VALUE))
+                    .addComponent(btnGraficoServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         desktopPane.add(jifListarMascotas);
@@ -417,33 +509,33 @@ public class MDIVeterinaria extends javax.swing.JFrame {
         jifRegistrarMasotaLayout.setHorizontalGroup(
             jifRegistrarMasotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jifRegistrarMasotaLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addGroup(jifRegistrarMasotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jlbServicio)
+                    .addComponent(jlbRaza)
+                    .addComponent(jlbEspecie)
+                    .addComponent(jlbSexoMascota)
+                    .addComponent(jlbNombreMascota)
+                    .addComponent(jlbCodigoMascota)
+                    .addComponent(jlbFecha))
+                .addGap(18, 18, 18)
                 .addGroup(jifRegistrarMasotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jifRegistrarMasotaLayout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addGroup(jifRegistrarMasotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel10)
-                            .addGroup(jifRegistrarMasotaLayout.createSequentialGroup()
-                                .addGroup(jifRegistrarMasotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jlbServicio)
-                                    .addComponent(jlbRaza)
-                                    .addComponent(jlbEspecie)
-                                    .addComponent(jlbSexoMascota)
-                                    .addComponent(jlbNombreMascota)
-                                    .addComponent(jlbCodigoMascota)
-                                    .addComponent(jlbFecha))
-                                .addGap(18, 18, 18)
-                                .addGroup(jifRegistrarMasotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtFecha)
-                                    .addComponent(txtCodigoMascota)
-                                    .addComponent(txtNombreMascota)
-                                    .addComponent(cmbSexoMascota, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cmbEspecie, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cmbRaza, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cmbServicio, 0, 220, Short.MAX_VALUE)))))
-                    .addGroup(jifRegistrarMasotaLayout.createSequentialGroup()
-                        .addGap(152, 152, 152)
-                        .addComponent(btmRegistrar)))
-                .addContainerGap(67, Short.MAX_VALUE))
+                    .addComponent(cmbSexoMascota, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cmbEspecie, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cmbRaza, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cmbServicio, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCodigoMascota)
+                    .addComponent(txtNombreMascota))
+                .addGap(66, 66, 66))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jifRegistrarMasotaLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel10)
+                .addGap(128, 128, 128))
+            .addGroup(jifRegistrarMasotaLayout.createSequentialGroup()
+                .addGap(225, 225, 225)
+                .addComponent(btmRegistrar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jifRegistrarMasotaLayout.setVerticalGroup(
             jifRegistrarMasotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -478,9 +570,9 @@ public class MDIVeterinaria extends javax.swing.JFrame {
                 .addGroup(jifRegistrarMasotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlbServicio)
                     .addComponent(cmbServicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(54, 54, 54)
+                .addGap(55, 55, 55)
                 .addComponent(btmRegistrar)
-                .addContainerGap(159, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         desktopPane.add(jifRegistrarMasota);
@@ -507,14 +599,14 @@ public class MDIVeterinaria extends javax.swing.JFrame {
         });
         menuInicio.add(menuAgregarMascota);
 
-        menuActualizarServicio.setMnemonic('a');
-        menuActualizarServicio.setText("Actualizar Servicio");
-        menuActualizarServicio.addActionListener(new java.awt.event.ActionListener() {
+        menuGraficoServicio.setMnemonic('a');
+        menuGraficoServicio.setText("Grafico Servicio");
+        menuGraficoServicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuActualizarServicioActionPerformed(evt);
+                menuGraficoServicioActionPerformed(evt);
             }
         });
-        menuInicio.add(menuActualizarServicio);
+        menuInicio.add(menuGraficoServicio);
 
         menuSalir.setMnemonic('x');
         menuSalir.setText("Salir");
@@ -549,27 +641,10 @@ public class MDIVeterinaria extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_menuSalirActionPerformed
 
-    private void menuActualizarServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuActualizarServicioActionPerformed
+    private void menuGraficoServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuGraficoServicioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_menuActualizarServicioActionPerformed
-
-    private void txtCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCorreoActionPerformed
-
-    private void btmIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btmIngresarActionPerformed
-        try 
-        {
-            usuarioAutenticado = controlUsuarios.verificarUsuario(txtCorreo.getText(), txtContrasenia.getText());
-            controladorEstadoMenus();
-            jifLogin.hide();
-            JOptionPane.showMessageDialog(rootPane, " Bienvenido " + usuarioAutenticado.getNombre(),"Ingreso Correcto",1);
-        } 
-        catch (VeterinariaExcepcion ex) 
-        {
-            JOptionPane.showMessageDialog(rootPane, ex.getMessage(), "Error", 0);
-        }
-    }//GEN-LAST:event_btmIngresarActionPerformed
+        grafico1.show();
+    }//GEN-LAST:event_menuGraficoServicioActionPerformed
 
     private void menuListarMascotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuListarMascotasActionPerformed
         // TODO add your handling code here:
@@ -599,24 +674,6 @@ public class MDIVeterinaria extends javax.swing.JFrame {
         jifRegistrarMasota.show();
     }//GEN-LAST:event_menuAgregarMascotaActionPerformed
 
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
-//        int eli;
-//            eli=tblMascotas.getSelectedRow();
-//            System.out.println(eli);
-//        if (eli==-1)
-//        {
-//            JOptionPane.showConfirmDialog(null,"No has seleccionado fila","Error",2);
-//        }
-//        else
-//        {
-//            tblMascotas.removeRowSelectionInterval(eli, eli);
-//        }
-//        tblMascotas.repaint();
-
-        
-    }//GEN-LAST:event_btnEliminarActionPerformed
-
     private void cmbEspecieItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbEspecieItemStateChanged
         // TODO add your handling code here:
         llenarCombosRazas();
@@ -624,21 +681,21 @@ public class MDIVeterinaria extends javax.swing.JFrame {
 
     private void btmRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btmRegistrarActionPerformed
         // TODO add your handling code here:
-        
+
         RegistroServicio adicionarMascota;
         int pos= cmbSexoMascota.getSelectedIndex();
         int pos1= cmbEspecie.getSelectedIndex();
         int pos2= cmbRaza.getSelectedIndex();
         int pos3= cmbServicio.getSelectedIndex();
-        
-//        adicionarMascota=controlVeterinaria.verificarMascota(txtFecha.getText(), txtCodigoMascota.getText(), txtNombreMascota.getText(), controlVeterinaria.getSexos()[pos],
-//        controlVeterinaria.getEspecies()[pos1], controlVeterinaria.getRazas()[pos2], controlVeterinaria.getServicio()[pos3]);
-        try 
+
+        //        adicionarMascota=controlVeterinaria.verificarMascota(txtFecha.getText(), txtCodigoMascota.getText(), txtNombreMascota.getText(), controlVeterinaria.getSexos()[pos],
+            //        controlVeterinaria.getEspecies()[pos1], controlVeterinaria.getRazas()[pos2], controlVeterinaria.getServicio()[pos3]);
+        try
         {
             if (validarCodigo()==false)
             {
                 adicionarMascota=controlVeterinaria.verificarMascota(txtFecha.getText(), txtCodigoMascota.getText(), txtNombreMascota.getText(), controlVeterinaria.getSexos()[pos],
-                controlVeterinaria.getEspecies()[pos1], controlVeterinaria.getRazas()[pos2], controlVeterinaria.getServicio()[pos3]);
+                    controlVeterinaria.getEspecies()[pos1], controlVeterinaria.getRazas()[pos2], controlVeterinaria.getServicio()[pos3]);
                 String mensaje=controlVeterinaria.adicionarMascota(adicionarMascota);
                 llenarMascotas();
                 JOptionPane.showMessageDialog(rootPane, mensaje);
@@ -656,14 +713,144 @@ public class MDIVeterinaria extends javax.swing.JFrame {
         txtNombreMascota.setText("");
         txtContrasenia.setText("");
         txtCorreo.setText("");
-        
-        
-        
-        
 
-        //        String mensaje= ControladorVeterinaria.(adicionarMascota);
-
+        ///        String mensaje= ControladorVeterinaria.(adicionarMascota);
     }//GEN-LAST:event_btmRegistrarActionPerformed
+
+    private void btnGraficoServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGraficoServicioActionPerformed
+        // TODO add your handling code here
+
+        if (tblMascotas.getRowCount()!=0)
+        {
+            //         servicio[0] = new Servicio((byte)1, "Baño", 35000);
+            //        servicio[1] = new Servicio((byte)2, "Consulta Medica", 40000);
+            //        servicio[2] = new Servicio((byte)3, "Estetica", 50000);
+            //        servicio[3] = new Servicio((byte)4, "Desparasitacion", 15000);
+            int ser1 = 0;
+            int ser2 = 0;
+            int ser3 = 0;
+            int ser4 = 0;
+
+            int cols = tblMascotas.getColumnCount();
+            int fils = tblMascotas.getRowCount();
+            for(int i=0; i<fils; i++) {
+
+                if(tblMascotas.getValueAt(i, 6).equals("Baño"))
+                {
+                    ser1++;
+                }
+                else if(tblMascotas.getValueAt(i, 6).equals("Consulta Medica"))
+                {
+                    ser2++;
+                }
+                else if(tblMascotas.getValueAt(i, 6).equals("Estetica"))
+                {
+                    ser3++;
+                }
+                else if(tblMascotas.getValueAt(i, 6).equals("Desparasitacion"))
+                {
+                    ser4++;
+                }
+                System.out.println(tblMascotas.getValueAt(i, 6));
+            }
+
+            if (controlVeterinaria.getRegServicios() != null) {
+
+                DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+                for(int i = 0; i < tblMascotas.getRowCount(); i++)
+
+                dataset.setValue(ser1, "Servicio", controlVeterinaria.getServicio()[0].getNombreServicio());
+                dataset.setValue(ser2, "Servicio", controlVeterinaria.getServicio()[1].getNombreServicio());
+                dataset.setValue(ser3, "Servicio", controlVeterinaria.getServicio()[2].getNombreServicio());
+                dataset.setValue(ser4, "Servicio", controlVeterinaria.getServicio()[3].getNombreServicio());
+                //            dataset.setValue(controlVeterinaria.getParticipantes()[1].getPuntuacion(), "Puntaje", controlVeterinaria.getParticipantes()[1].getNombre());
+                //            dataset.setValue(controlVeterinaria.getParticipantes()[2].getPuntuacion(), "Puntaje", controlVeterinaria.getParticipantes()[2].getNombre());
+                //            dataset.setValue(controlVeterinaria.getParticipantes()[3].getPuntuacion(), "Puntaje", controlVeterinaria.getParticipantes()[3].getNombre());
+                //            dataset.setValue(controlVeterinaria.getParticipantes()[4].getPuntuacion(), "Puntaje", controlVeterinaria.getParticipantes()[4].getNombre());
+                JFreeChart diagramaServicio = ChartFactory.createBarChart("Gráfica Servicios", "Nombre Servicio", "Cantidad", dataset, PlotOrientation.VERTICAL, false, true, false);
+                CategoryPlot p = diagramaServicio.getCategoryPlot();
+                p.setRangeGridlinePaint(Color.BLUE);
+                ChartFrame pantalla = new ChartFrame("Diagrama", diagramaServicio);
+                pantalla.setVisible(true);
+                pantalla.setSize(500, 500);
+            } else {
+                JOptionPane.showMessageDialog(null, "No se ha agregado todos los participantes");
+            }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "No hay datos");
+        }
+        //        grafico1.show();
+    }//GEN-LAST:event_btnGraficoServicioActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel miTableModel = (DefaultTableModel) tblMascotas.getModel();
+        int eli = tblMascotas.getSelectedRow();
+        if (eli >= 0)
+        {
+            controlVeterinaria.eliminarMascota(ERROR);
+            miTableModel.removeRow(eli);
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "No tienes mas mascotas para eliminar");
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void tblMascotasKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblMascotasKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblMascotasKeyReleased
+
+    private void tblMascotasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblMascotasKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblMascotasKeyPressed
+
+    private void btmIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btmIngresarActionPerformed
+        try
+        {
+            usuarioAutenticado = controlUsuarios.verificarUsuario(txtCorreo.getText(), txtContrasenia.getText());
+            controladorEstadoMenus();
+            jifLogin.hide();
+            JOptionPane.showMessageDialog(rootPane, " Bienvenido " + usuarioAutenticado.getNombre(),"Ingreso Correcto",1);
+        }
+        catch (VeterinariaExcepcion ex)
+        {
+            JOptionPane.showMessageDialog(rootPane, ex.getMessage(), "Error", 0);
+        }
+        //        if(txtCorreo.getText().equals("")|| txtContrasenia.getPassword().length==0)
+        //            {
+            //            JOptionPane.showMessageDialog(rootPane, "Debe diligenciar los campos obligatorios", "Error", 1);
+            //            }
+        //            else
+        //            {
+            //            try {
+                //                ///Si ingreso datos
+                //                if(controlUsuarios.verificarUsuario(txtCorreo.getText(), txtContrasenia.getText()))
+                //                {
+                    //                    controladorEstadoMenus();
+                    //                    jifLogin.hide();
+                    //                }
+                //                else
+                //                {
+                    //                    JOptionPane.showMessageDialog(rootPane, "Los datos ingresados son errados", "Error",0);
+                    //                }
+                //            } catch (VeterinariaExcepcion ex) {
+                //                Logger.getLogger(MDIVeterinaria.class.getName()).log(Level.SEVERE, null, ex);
+                //            }
+            //
+            //
+            //            }
+
+    }//GEN-LAST:event_btmIngresarActionPerformed
+
+    private void txtCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCorreoActionPerformed
+        
+    //Metodo para validar el codigo no se repita
     
     public boolean validarCodigo(){
         for(int i=0;  i<tblMascotas.getRowCount(); i++){
@@ -732,7 +919,6 @@ public class MDIVeterinaria extends javax.swing.JFrame {
     private javax.swing.JButton btmIngresar;
     private javax.swing.JButton btmRegistrar;
     private javax.swing.JButton btnEliminar;
-    private javax.swing.JButton btnGraficaEspecie;
     private javax.swing.JButton btnGraficoServicio;
     private javax.swing.JComboBox<String> cmbEspecie;
     private javax.swing.JComboBox<String> cmbRaza;
@@ -742,6 +928,9 @@ public class MDIVeterinaria extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JInternalFrame jifListarMascotas;
     private javax.swing.JInternalFrame jifLogin;
@@ -755,9 +944,9 @@ public class MDIVeterinaria extends javax.swing.JFrame {
     private javax.swing.JLabel jlbSexoMascota;
     private javax.swing.JLabel lblContrasenia;
     private javax.swing.JLabel lblUsuario;
-    private javax.swing.JMenuItem menuActualizarServicio;
     private javax.swing.JMenuItem menuAgregarMascota;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenuItem menuGraficoServicio;
     private javax.swing.JMenu menuInicio;
     private javax.swing.JMenuItem menuListarMascotas;
     private javax.swing.JMenuItem menuSalir;

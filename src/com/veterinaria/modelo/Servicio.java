@@ -18,7 +18,6 @@ public class Servicio implements Serializable{
 
 /////////////////////////////////////////////////////////////////////
     
-    
     public Servicio(byte codigoServicio) {
         this.codigoServicio = codigoServicio;
     }

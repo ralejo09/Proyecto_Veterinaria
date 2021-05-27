@@ -14,6 +14,7 @@ import java.io.Serializable;
 public class Raza implements Serializable{
     private byte codigoRaza;
     private String nombre;
+    
 /////////////////////////////////////////////////////////////////////
 
     public Raza(byte codigoRaza, String nombre) {
