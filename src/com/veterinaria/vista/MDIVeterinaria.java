@@ -14,6 +14,7 @@ import com.veterinaria.modelo.Raza;
 import com.veterinaria.modelo.RegistroServicio;
 import com.veterinaria.modelo.Servicio;
 import com.veterinaria.modelo.Sexo;
+import com.veterinaria.modelo.TotalRaza;
 import com.veterinaria.modelo.Usuario;
 import java.awt.Color;
 import java.beans.PropertyVetoException;
@@ -40,6 +41,7 @@ import org.jfree.data.general.DefaultPieDataset;
  */
 public class MDIVeterinaria extends javax.swing.JFrame {
     DefaultTableModel model= new DefaultTableModel();
+    DefaultTableModel model1= new DefaultTableModel();
     private ControladorUsuario controlUsuarios;
     private Usuario usuarioAutenticado;
     private ControladorVeterinaria controlVeterinaria;
@@ -64,6 +66,9 @@ public class MDIVeterinaria extends javax.swing.JFrame {
         txtContrasenia.setText("123456");
         
         llenarMascotas();
+        
+        llenarTotalRaza();
+//        llenarTotalRazaPerro();
         
         controlVeterinaria= new ControladorVeterinaria();
         llenarCombosSexos();
@@ -238,6 +243,98 @@ public class MDIVeterinaria extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         btnEliminar = new javax.swing.JButton();
         btnGraficoServicio = new javax.swing.JButton();
+        jifTotalRaza = new javax.swing.JInternalFrame();
+        jlbGatos = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
+        jLabel42 = new javax.swing.JLabel();
+        jLabel43 = new javax.swing.JLabel();
+        jLabel44 = new javax.swing.JLabel();
+        jLabel45 = new javax.swing.JLabel();
+        jLabel46 = new javax.swing.JLabel();
+        jLabel47 = new javax.swing.JLabel();
+        jLabel48 = new javax.swing.JLabel();
+        txtRaza1 = new javax.swing.JTextField();
+        txtRaza2 = new javax.swing.JTextField();
+        txtRaza3 = new javax.swing.JTextField();
+        txtRaza4 = new javax.swing.JTextField();
+        txtRaza5 = new javax.swing.JTextField();
+        txtRaza6 = new javax.swing.JTextField();
+        txtRaza7 = new javax.swing.JTextField();
+        txtRaza8 = new javax.swing.JTextField();
+        txtRaza9 = new javax.swing.JTextField();
+        txtRaza10 = new javax.swing.JTextField();
+        txtRaza11 = new javax.swing.JTextField();
+        txtRaza12 = new javax.swing.JTextField();
+        txtRaza13 = new javax.swing.JTextField();
+        txtRaza14 = new javax.swing.JTextField();
+        txtRaza15 = new javax.swing.JTextField();
+        txtRaza16 = new javax.swing.JTextField();
+        txtRaza17 = new javax.swing.JTextField();
+        txtRaza18 = new javax.swing.JTextField();
+        txtRaza19 = new javax.swing.JTextField();
+        txtRaza20 = new javax.swing.JTextField();
+        txtRaza22 = new javax.swing.JTextField();
+        txtRaza23 = new javax.swing.JTextField();
+        txtRaza24 = new javax.swing.JTextField();
+        txtRaza25 = new javax.swing.JTextField();
+        txtRaza21 = new javax.swing.JTextField();
+        txtRaza26 = new javax.swing.JTextField();
+        txtRaza27 = new javax.swing.JTextField();
+        txtRaza28 = new javax.swing.JTextField();
+        txtRaza29 = new javax.swing.JTextField();
+        txtRaza30 = new javax.swing.JTextField();
+        txtRaza31 = new javax.swing.JTextField();
+        txtRaza32 = new javax.swing.JTextField();
+        txtRaza33 = new javax.swing.JTextField();
+        txtRaza34 = new javax.swing.JTextField();
+        txtRaza35 = new javax.swing.JTextField();
+        txtRaza36 = new javax.swing.JTextField();
+        txtRaza37 = new javax.swing.JTextField();
+        txtRaza38 = new javax.swing.JTextField();
+        txtRaza39 = new javax.swing.JTextField();
+        txtRaza40 = new javax.swing.JTextField();
+        txtRaza41 = new javax.swing.JTextField();
+        txtRaza42 = new javax.swing.JTextField();
+        txtRaza43 = new javax.swing.JTextField();
+        txtRaza44 = new javax.swing.JTextField();
+        txtRaza45 = new javax.swing.JTextField();
         jifRegistrarMasota = new javax.swing.JInternalFrame();
         btmRegistrar = new javax.swing.JButton();
         jlbFecha = new javax.swing.JLabel();
@@ -260,6 +357,7 @@ public class MDIVeterinaria extends javax.swing.JFrame {
         menuListarMascotas = new javax.swing.JMenuItem();
         menuAgregarMascota = new javax.swing.JMenuItem();
         menuGraficoServicio = new javax.swing.JMenuItem();
+        menuTotalRaza = new javax.swing.JMenuItem();
         menuSalir = new javax.swing.JMenuItem();
 
         jMenu1.setText("File");
@@ -458,11 +556,549 @@ public class MDIVeterinaria extends javax.swing.JFrame {
                 .addGroup(jifListarMascotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGraficoServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         desktopPane.add(jifListarMascotas);
         jifListarMascotas.setBounds(200, 70, 1000, 520);
+
+        jifTotalRaza.setClosable(true);
+        jifTotalRaza.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        jifTotalRaza.setIconifiable(true);
+        jifTotalRaza.setMaximizable(true);
+        jifTotalRaza.setResizable(true);
+        jifTotalRaza.setTitle("Total por raza");
+        jifTotalRaza.setAutoscrolls(true);
+        jifTotalRaza.setVisible(false);
+
+        jlbGatos.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 24)); // NOI18N
+        jlbGatos.setText("RAZAS");
+
+        jLabel3.setText("Maine Coon");
+
+        jLabel4.setText("Gato Persa");
+
+        jLabel5.setText("Gato Esfinge");
+
+        jLabel6.setText("Sphynx");
+
+        jLabel7.setText("Gato Saimés");
+
+        jLabel8.setText("Gato Bengalí");
+
+        jLabel9.setText("Gato Exótico");
+
+        jLabel11.setText("Bosque de Noruega");
+
+        jLabel12.setText("Gato Siberiano");
+
+        jLabel13.setText("Gato Birmano");
+
+        jLabel14.setText("Angora Turco");
+
+        jLabel15.setText("Van Turco");
+
+        jLabel16.setText("Gato Himalayo");
+
+        jLabel17.setText("Savannah");
+
+        jLabel18.setText("Azul Ruso");
+
+        jLabel19.setText("Gato Ragdoll");
+
+        jLabel20.setText("Gato Oriental");
+
+        jLabel21.setText("British Shorthair");
+
+        jLabel22.setText("Nebelung");
+
+        jLabel23.setText("Munchkin");
+
+        jLabel24.setText("Lykoi");
+
+        jLabel25.setText("PeterBald");
+
+        jLabel26.setText("Burmés");
+
+        jLabel27.setText("Tonkinés");
+
+        jLabel28.setText("Scottish Fold");
+
+        jLabel29.setText("Burmilla");
+
+        jLabel30.setText("Abisinio");
+
+        jLabel31.setText("Gato Bombay");
+
+        jLabel32.setText("Korat");
+
+        jLabel33.setText("Devon Rex");
+
+        jLabel34.setText("Cornish Rex");
+
+        jLabel35.setText("Selkirk Rex");
+
+        jLabel36.setText("Gato Común Europeo");
+
+        jLabel37.setText("Snowshoe");
+
+        jLabel38.setText("Bobtail Japonés");
+
+        jLabel39.setText("Gato Balinés");
+
+        jLabel40.setText("Laperm");
+
+        jLabel41.setText("Singapura");
+
+        jLabel42.setText("Gato Cartujo");
+
+        jLabel43.setText("Mau Egipcio");
+
+        jLabel44.setText("Ocicat");
+
+        jLabel45.setText("Toyger");
+
+        jLabel46.setText("Gato Manx");
+
+        jLabel47.setText("Gato Ragamuffin");
+
+        jLabel48.setText("Curl Americano");
+
+        txtRaza1.setEditable(false);
+
+        txtRaza2.setEditable(false);
+
+        txtRaza3.setEditable(false);
+
+        txtRaza4.setEditable(false);
+
+        txtRaza5.setEditable(false);
+
+        txtRaza6.setEditable(false);
+
+        txtRaza7.setEditable(false);
+
+        txtRaza8.setEditable(false);
+
+        txtRaza9.setEditable(false);
+
+        txtRaza10.setEditable(false);
+
+        txtRaza11.setEditable(false);
+
+        txtRaza12.setEditable(false);
+
+        txtRaza13.setEditable(false);
+
+        txtRaza14.setEditable(false);
+
+        txtRaza15.setEditable(false);
+
+        txtRaza16.setEditable(false);
+
+        txtRaza17.setEditable(false);
+
+        txtRaza18.setEditable(false);
+
+        txtRaza19.setEditable(false);
+
+        txtRaza20.setEditable(false);
+
+        txtRaza22.setEditable(false);
+
+        txtRaza23.setEditable(false);
+
+        txtRaza24.setEditable(false);
+
+        txtRaza25.setEditable(false);
+
+        txtRaza21.setEditable(false);
+
+        txtRaza26.setEditable(false);
+
+        txtRaza27.setEditable(false);
+
+        txtRaza28.setEditable(false);
+
+        txtRaza29.setEditable(false);
+
+        txtRaza30.setEditable(false);
+
+        txtRaza31.setEditable(false);
+
+        txtRaza32.setEditable(false);
+
+        txtRaza33.setEditable(false);
+
+        txtRaza34.setEditable(false);
+
+        txtRaza35.setEditable(false);
+
+        txtRaza36.setEditable(false);
+
+        txtRaza37.setEditable(false);
+
+        txtRaza38.setEditable(false);
+
+        txtRaza39.setEditable(false);
+
+        txtRaza40.setEditable(false);
+
+        txtRaza41.setEditable(false);
+
+        txtRaza42.setEditable(false);
+
+        txtRaza43.setEditable(false);
+
+        txtRaza44.setEditable(false);
+
+        txtRaza45.setEditable(false);
+
+        javax.swing.GroupLayout jifTotalRazaLayout = new javax.swing.GroupLayout(jifTotalRaza.getContentPane());
+        jifTotalRaza.getContentPane().setLayout(jifTotalRazaLayout);
+        jifTotalRazaLayout.setHorizontalGroup(
+            jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jifTotalRazaLayout.createSequentialGroup()
+                .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jifTotalRazaLayout.createSequentialGroup()
+                            .addGap(31, 31, 31)
+                            .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel11)
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel8))
+                                .addGroup(jifTotalRazaLayout.createSequentialGroup()
+                                    .addGap(35, 35, 35)
+                                    .addComponent(jLabel5))))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jifTotalRazaLayout.createSequentialGroup()
+                            .addGap(86, 86, 86)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(18, 18, 18)
+                .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtRaza1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtRaza3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtRaza2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtRaza4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtRaza6, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtRaza7, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtRaza8, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtRaza9, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtRaza10, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtRaza11, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtRaza12, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtRaza13, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtRaza14, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtRaza15, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtRaza5, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(65, 65, 65)
+                .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jifTotalRazaLayout.createSequentialGroup()
+                        .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jifTotalRazaLayout.createSequentialGroup()
+                                .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel25, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(18, 18, 18)
+                                .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtRaza16, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtRaza17, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtRaza18, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtRaza19, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtRaza20, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jifTotalRazaLayout.createSequentialGroup()
+                                .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel26)
+                                    .addComponent(jLabel27)
+                                    .addComponent(jLabel23)
+                                    .addComponent(jLabel24)
+                                    .addComponent(jLabel30)
+                                    .addComponent(jLabel48))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtRaza25, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtRaza24, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtRaza23, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtRaza22, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtRaza21, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtRaza28, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jifTotalRazaLayout.createSequentialGroup()
+                                .addComponent(jLabel28)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtRaza26, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jifTotalRazaLayout.createSequentialGroup()
+                                .addComponent(jLabel29)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtRaza27, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jifTotalRazaLayout.createSequentialGroup()
+                                .addComponent(jLabel31)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtRaza29, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jifTotalRazaLayout.createSequentialGroup()
+                                .addComponent(jLabel32)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtRaza30, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(48, 48, 48)
+                        .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jifTotalRazaLayout.createSequentialGroup()
+                                .addComponent(jLabel38)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtRaza31, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jifTotalRazaLayout.createSequentialGroup()
+                                .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jifTotalRazaLayout.createSequentialGroup()
+                                        .addComponent(jLabel39)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtRaza32, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jifTotalRazaLayout.createSequentialGroup()
+                                        .addComponent(jLabel41)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtRaza33, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jifTotalRazaLayout.createSequentialGroup()
+                                        .addComponent(jLabel40)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtRaza34, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jifTotalRazaLayout.createSequentialGroup()
+                                        .addComponent(jLabel33)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtRaza35, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jifTotalRazaLayout.createSequentialGroup()
+                                        .addComponent(jLabel34)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtRaza36, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jifTotalRazaLayout.createSequentialGroup()
+                                        .addComponent(jLabel35)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtRaza37, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jifTotalRazaLayout.createSequentialGroup()
+                                        .addComponent(jLabel36)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtRaza38, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jifTotalRazaLayout.createSequentialGroup()
+                                        .addComponent(jLabel37)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtRaza39, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jifTotalRazaLayout.createSequentialGroup()
+                                        .addComponent(jLabel42)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtRaza40, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jifTotalRazaLayout.createSequentialGroup()
+                                        .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(jLabel46)
+                                            .addComponent(jLabel47)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jifTotalRazaLayout.createSequentialGroup()
+                                                .addGap(47, 47, 47)
+                                                .addComponent(jLabel45))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jifTotalRazaLayout.createSequentialGroup()
+                                                .addGap(51, 51, 51)
+                                                .addComponent(jLabel44))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jifTotalRazaLayout.createSequentialGroup()
+                                                .addGap(25, 25, 25)
+                                                .addComponent(jLabel43)))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtRaza41, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtRaza42, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtRaza43, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtRaza44, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtRaza45, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(1, 1, 1))))
+                    .addGroup(jifTotalRazaLayout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jlbGatos, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(82, Short.MAX_VALUE))
+        );
+        jifTotalRazaLayout.setVerticalGroup(
+            jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jifTotalRazaLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jlbGatos, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jifTotalRazaLayout.createSequentialGroup()
+                        .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(txtRaza1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(txtRaza2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtRaza3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtRaza4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtRaza5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jifTotalRazaLayout.createSequentialGroup()
+                        .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel15)
+                            .addComponent(txtRaza16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel38)
+                            .addComponent(txtRaza31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel16)
+                            .addComponent(txtRaza17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel39)
+                            .addComponent(txtRaza32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel17)
+                            .addComponent(txtRaza18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel41)
+                            .addComponent(txtRaza33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel22)
+                            .addComponent(txtRaza19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel40)
+                            .addComponent(txtRaza34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel25)
+                            .addComponent(txtRaza20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel33)
+                            .addComponent(txtRaza35, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jifTotalRazaLayout.createSequentialGroup()
+                        .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(txtRaza6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(txtRaza7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel11)
+                            .addComponent(txtRaza8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel12)
+                            .addComponent(txtRaza9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel18)
+                            .addComponent(txtRaza10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel19)
+                            .addComponent(txtRaza11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel21)
+                            .addComponent(txtRaza12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel20)
+                            .addComponent(txtRaza13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel13)
+                            .addComponent(txtRaza14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel14)
+                            .addComponent(txtRaza15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(295, 295, 295))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jifTotalRazaLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel24)
+                            .addComponent(txtRaza21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel34)
+                            .addComponent(txtRaza36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel23)
+                            .addComponent(txtRaza22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel35)
+                            .addComponent(txtRaza37, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel26)
+                            .addComponent(txtRaza23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel36)
+                            .addComponent(txtRaza38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel27)
+                            .addComponent(txtRaza24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel37)
+                            .addComponent(txtRaza39, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel48)
+                            .addComponent(txtRaza25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel42)
+                            .addComponent(txtRaza40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jifTotalRazaLayout.createSequentialGroup()
+                                .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel28)
+                                    .addComponent(txtRaza26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel29)
+                                    .addComponent(txtRaza27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel30)
+                                    .addComponent(txtRaza28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel31)
+                                    .addComponent(txtRaza29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel32)
+                                    .addComponent(txtRaza30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jifTotalRazaLayout.createSequentialGroup()
+                                .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel43)
+                                    .addComponent(txtRaza41, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel44)
+                                    .addComponent(txtRaza42, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel45)
+                                    .addComponent(txtRaza43, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel46)
+                                    .addComponent(txtRaza44, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jifTotalRazaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel47)
+                                    .addComponent(txtRaza45, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(296, 296, 296))))
+        );
+
+        desktopPane.add(jifTotalRaza);
+        jifTotalRaza.setBounds(70, 10, 620, 590);
 
         jifRegistrarMasota.setClosable(true);
         jifRegistrarMasota.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
@@ -501,6 +1137,12 @@ public class MDIVeterinaria extends javax.swing.JFrame {
         cmbEspecie.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmbEspecieItemStateChanged(evt);
+            }
+        });
+
+        cmbRaza.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbRazaActionPerformed(evt);
             }
         });
 
@@ -572,7 +1214,7 @@ public class MDIVeterinaria extends javax.swing.JFrame {
                     .addComponent(cmbServicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(55, 55, 55)
                 .addComponent(btmRegistrar)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(166, Short.MAX_VALUE))
         );
 
         desktopPane.add(jifRegistrarMasota);
@@ -607,6 +1249,14 @@ public class MDIVeterinaria extends javax.swing.JFrame {
             }
         });
         menuInicio.add(menuGraficoServicio);
+
+        menuTotalRaza.setText("Total por Raza");
+        menuTotalRaza.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuTotalRazaActionPerformed(evt);
+            }
+        });
+        menuInicio.add(menuTotalRaza);
 
         menuSalir.setMnemonic('x');
         menuSalir.setText("Salir");
@@ -643,7 +1293,64 @@ public class MDIVeterinaria extends javax.swing.JFrame {
 
     private void menuGraficoServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuGraficoServicioActionPerformed
         // TODO add your handling code here:
-        grafico1.show();
+        if (tblMascotas.getRowCount()!=0)
+        {
+            //        servicio[0] = new Servicio((byte)1, "Baño", 35000);
+            //        servicio[1] = new Servicio((byte)2, "Consulta Medica", 40000);
+            //        servicio[2] = new Servicio((byte)3, "Estetica", 50000);
+            //        servicio[3] = new Servicio((byte)4, "Desparasitacion", 15000);
+            int ser1 = 0;
+            int ser2 = 0;
+            int ser3 = 0;
+            int ser4 = 0;
+
+            int cols = tblMascotas.getColumnCount();
+            int fils = tblMascotas.getRowCount();
+            for(int i=0; i<fils; i++) {
+
+                switch (controlVeterinaria.getRegServicios()[i].getServicio().getNombreServicio()) {
+                    case "Baño":
+                        ser1++;
+                        break;
+                    case "Consulta Medica":
+                        ser2++;
+                        break;
+                    case "Estetica":
+                        ser3++;
+                        break;
+                    case "Desparasitacion":
+                        ser4++;
+                        break;
+                    default:
+                        break;
+                }
+                
+                System.out.println(tblMascotas.getValueAt(i, 6));
+            }
+
+            if (controlVeterinaria.getRegServicios() != null) {
+
+                DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+                dataset.setValue(ser1, "Servicio", controlVeterinaria.getServicio()[0].getNombreServicio());
+                dataset.setValue(ser2, "Servicio", controlVeterinaria.getServicio()[1].getNombreServicio());
+                dataset.setValue(ser3, "Servicio", controlVeterinaria.getServicio()[2].getNombreServicio());
+                dataset.setValue(ser4, "Servicio", controlVeterinaria.getServicio()[3].getNombreServicio());
+                JFreeChart diagramaServicio = ChartFactory.createBarChart("Gráfica Servicios", "Nombre Servicio", "Cantidad", dataset, PlotOrientation.VERTICAL, false, true, false);
+                CategoryPlot p = diagramaServicio.getCategoryPlot();
+                p.setRangeGridlinePaint(Color.BLUE);
+                ChartFrame pantalla = new ChartFrame("Diagrama", diagramaServicio);
+                pantalla.setVisible(true);
+                pantalla.setSize(500, 500);
+            } else {
+                
+            }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "No hay datos");
+        }
+//        grafico1.show();
     }//GEN-LAST:event_menuGraficoServicioActionPerformed
 
     private void menuListarMascotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuListarMascotasActionPerformed
@@ -699,20 +1406,22 @@ public class MDIVeterinaria extends javax.swing.JFrame {
                 String mensaje=controlVeterinaria.adicionarMascota(adicionarMascota);
                 llenarMascotas();
                 JOptionPane.showMessageDialog(rootPane, mensaje);
+                txtCodigoMascota.setText("");
+                txtFecha.setText("");
+                txtNombreMascota.setText("");
+                txtContrasenia.setText("");
+                txtCorreo.setText("");
             }
             else
             {
                 JOptionPane.showMessageDialog(rootPane, "Codigo Repetido","Error",1);
             }
-        } catch (VeterinariaExcepcion ex) {
+        } catch (VeterinariaExcepcion ex) 
+        {
             JOptionPane.showMessageDialog(rootPane, ex.getMessage(), "Error", 1);
         }
 
-        txtCodigoMascota.setText("");
-        txtFecha.setText("");
-        txtNombreMascota.setText("");
-        txtContrasenia.setText("");
-        txtCorreo.setText("");
+        
 
         ///        String mensaje= ControladorVeterinaria.(adicionarMascota);
     }//GEN-LAST:event_btmRegistrarActionPerformed
@@ -726,30 +1435,30 @@ public class MDIVeterinaria extends javax.swing.JFrame {
             //        servicio[1] = new Servicio((byte)2, "Consulta Medica", 40000);
             //        servicio[2] = new Servicio((byte)3, "Estetica", 50000);
             //        servicio[3] = new Servicio((byte)4, "Desparasitacion", 15000);
-            int ser1 = 0;
-            int ser2 = 0;
-            int ser3 = 0;
-            int ser4 = 0;
+            int serBaño = 0;
+            int serConsultaMedica = 0;
+            int serEstetica = 0;
+            int serDesparasitacion = 0;
 
             int cols = tblMascotas.getColumnCount();
             int fils = tblMascotas.getRowCount();
             for(int i=0; i<fils; i++) {
 
-                if(controlVeterinaria.getRegServicios()[i].getServicio().getNombreServicio().equals("Baño"))
-                {
-                    ser1++;
-                }
-                else if(controlVeterinaria.getRegServicios()[i].getServicio().getNombreServicio().equals("Consulta Medica"))
-                {
-                    ser2++;
-                }
-                else if(controlVeterinaria.getRegServicios()[i].getServicio().getNombreServicio().equals("Estetica"))
-                {
-                    ser3++;
-                }
-                else if(controlVeterinaria.getRegServicios()[i].getServicio().getNombreServicio().equals("Desparasitacion"))
-                {
-                    ser4++;
+                switch (controlVeterinaria.getRegServicios()[i].getServicio().getNombreServicio()) {
+                    case "Baño":
+                        serBaño++;
+                        break;
+                    case "Consulta Medica":
+                        serConsultaMedica++;
+                        break;
+                    case "Estetica":
+                        serEstetica++;
+                        break;
+                    case "Desparasitacion":
+                        serDesparasitacion++;
+                        break;
+                    default:
+                        break;
                 }
                 
                 System.out.println(tblMascotas.getValueAt(i, 6));
@@ -759,10 +1468,10 @@ public class MDIVeterinaria extends javax.swing.JFrame {
 
                 DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
-                dataset.setValue(ser1, "Servicio", controlVeterinaria.getServicio()[0].getNombreServicio());
-                dataset.setValue(ser2, "Servicio", controlVeterinaria.getServicio()[1].getNombreServicio());
-                dataset.setValue(ser3, "Servicio", controlVeterinaria.getServicio()[2].getNombreServicio());
-                dataset.setValue(ser4, "Servicio", controlVeterinaria.getServicio()[3].getNombreServicio());
+                dataset.setValue(serBaño, "Servicio", controlVeterinaria.getServicio()[0].getNombreServicio());
+                dataset.setValue(serConsultaMedica, "Servicio", controlVeterinaria.getServicio()[1].getNombreServicio());
+                dataset.setValue(serEstetica, "Servicio", controlVeterinaria.getServicio()[2].getNombreServicio());
+                dataset.setValue(serDesparasitacion, "Servicio", controlVeterinaria.getServicio()[3].getNombreServicio());
                 JFreeChart diagramaServicio = ChartFactory.createBarChart("Gráfica Servicios", "Nombre Servicio", "Cantidad", dataset, PlotOrientation.VERTICAL, false, true, false);
                 CategoryPlot p = diagramaServicio.getCategoryPlot();
                 p.setRangeGridlinePaint(Color.BLUE);
@@ -844,6 +1553,24 @@ public class MDIVeterinaria extends javax.swing.JFrame {
     private void txtCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCorreoActionPerformed
+
+    private void menuTotalRazaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuTotalRazaActionPerformed
+        // TODO add your handling code here:
+        if(jifTotalRaza.isIcon())
+        {
+            try {
+                jifTotalRaza.setIcon(false);
+            } catch (PropertyVetoException ex) {
+                System.out.println("No se encontraba minimizado");
+            }
+        }
+        //nos aplica la funcion
+        jifTotalRaza.show();
+    }//GEN-LAST:event_menuTotalRazaActionPerformed
+
+    private void cmbRazaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbRazaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbRazaActionPerformed
         
     //Metodo para validar el codigo no se repita
     
@@ -872,6 +1599,326 @@ public class MDIVeterinaria extends javax.swing.JFrame {
         
         tblMascotas.repaint();
     }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    
+//    public void llenarTotalRazaPerro()
+//    {
+//        
+//    }
+    
+    
+    public void llenarTotalRaza()
+    {
+        if(tblMascotas.getRowCount()!=0)
+        {    
+            int raza1 = 0;
+            int raza2 = 0;
+            int raza3 = 0;
+            int raza4 = 0;
+            int raza5 = 0;
+            int raza6 = 0;
+            int raza7 = 0;
+            int raza8 = 0;
+            int raza9 = 0;
+            int raza10 = 0;
+            int raza11 = 0;
+            int raza12 = 0;
+            int raza13 = 0;
+            int raza14 = 0;
+            int raza15 = 0;
+            int raza16 = 0;
+            int raza17 = 0;
+            int raza18 = 0;
+            int raza19 = 0;
+            int raza20 = 0;
+            int raza21 = 0;
+            int raza22 = 0;
+            int raza23 = 0;
+            int raza24 = 0;
+            int raza25 = 0;
+            int raza26 = 0;
+            int raza27 = 0;
+            int raza28 = 0;
+            int raza29 = 0;
+            int raza30= 0;
+            int raza31 = 0;
+            int raza32 = 0;
+            int raza33 = 0;
+            int raza34 = 0;
+            int raza35 = 0;
+            int raza36 = 0;
+            int raza37 = 0;
+            int raza38 = 0;
+            int raza39 = 0;
+            int raza40 = 0;
+            int raza41 = 0;
+            int raza42 = 0;
+            int raza43 = 0;
+            int raza44 = 0;
+            int raza45 = 0;
+            int raza46 = 0;
+            int raza47 = 0;
+            int raza48 = 0;
+            int raza49 = 0;
+            int raza50 = 0;
+            int raza51 = 0;
+            int raza52 = 0;
+            int raza53 = 0;
+            int raza54 = 0;
+            int raza55 = 0;
+            int raza56 = 0;
+            int raza57 = 0;
+            int raza58 = 0;
+            int raza59 = 0;
+            int raza60 = 0;
+            int raza61 = 0;
+            int raza62 = 0;
+            int raza63 = 0;
+            int raza64 = 0;
+            int raza65 = 0;
+            int raza66 = 0;
+            int raza67 = 0;
+            int raza68 = 0;
+            int raza69 = 0;
+            int raza70 = 0;
+
+            int cols = tblMascotas.getColumnCount();
+            int fils = tblMascotas.getRowCount();
+            for(int i=0; i<fils; i++) 
+            {
+                switch (controlVeterinaria.getRazas()[i].getNombre()) 
+                {
+                    case "Maine Coon":
+                        raza1++;
+                       
+                    case "Gato Persa":
+                        raza2++;
+                        break;
+                    case "Sphynx":
+                        raza3++;
+                        break;
+                    case "Gato Esfinge":
+                        raza4++;
+                        break;
+                    case "Gato Saimés":
+                        raza5++;
+                        break;
+                    case "Gato Bengalí":
+                        raza6++;
+                        break;
+                    case "Gato Exótico":
+                        raza7++;
+                        break;
+                    case "Bosque de Noruega":
+                        raza8++;
+                        break;
+                    case "Gato Siberiano":
+                        raza9++;
+                        break;
+                    case "Azul Ruso":
+                        raza10++;
+                        break;
+                    case "Gato Ragdoll":
+                        raza11++;
+                        break;
+                    case "British Shorthair":
+                        raza12++;
+                        break;
+                    case "Gato Oriental":
+                        raza13++;
+                        break;
+                    case "Gato Birmano":
+                        raza14++;
+                        break;
+                    case "Angora Turco":
+                        raza15++;
+                        break;
+                    case "Van Turco":
+                        raza16++;
+                        break;
+                    case "Gato Himalayo":
+                        raza17++;
+                        break;
+                    case "Savannah":
+                        raza18++;
+                        break;
+                    case "Nebelung":
+                        raza19++;
+                        break;
+                    case "PeterBald":
+                        raza20++;
+                        break;
+                    case "Lykoi":
+                        raza21++;
+                        break;
+                    case "Munchkin":
+                        raza22++;
+                        break;
+                    case "Burmés":
+                        raza23++;
+                        break;
+                    case "Tonkinés":
+                        raza24++;
+                        break;
+                    case "Curl Americano":
+                        raza25++;
+                        break;
+                    case "Scottish Fold":
+                        raza26++;
+                        break;
+                    case "Burmilla":
+                        raza27++;
+                        break;
+                    case "Abisinio":
+                        raza28++;
+                        break;
+                    case "Gato Bombay":
+                        raza29++;
+                        break;
+                    case "Korat":
+                        raza30++;
+                        break;
+                    case "Bobtail Japonés":
+                        raza31++;
+                        break;
+                    case "Gato Balinés":
+                        raza32++;
+                        break;
+                    case "Singapura":
+                        raza33++;
+                        break;
+                    case "Laperm":
+                        raza34++;
+                        break;
+                    case "Devon Rex":
+                        raza35++;
+                        break;
+                    case "Cornish Rex":
+                        raza36++;
+                        break;
+                    case "Selkirk Rex":
+                        raza37++;
+                        break;
+                    case "Gato Común Europeo":
+                        raza38++;
+                        break;
+                    case "Snowshoe":
+                        raza39++;
+                        break;
+                    case "Gato Cartujo":
+                        raza40++;
+                    case "Mau Egipcio":
+                        raza41++;
+                        break;
+                    case "Ocicat":
+                        raza42++;
+                        break;
+                    case "Toyger":
+                        raza43++;
+                        break;
+                    case "Gato Manx":
+                        raza44++;
+                        break;
+                    case "Gato Ragamuffin":
+                        raza45++;
+                        break;
+                    case "Cocker spaniel":
+                        raza46++;
+                        break;
+                    case "Pomerania":
+                        raza47++;
+                        break;
+                    case "Bulldog Francés":
+                        raza48++;
+                        break;
+                    case "Carlino":
+                        raza49++;
+                        break;
+                    case "Pug":
+                        raza50++;
+                        break;
+                    case "Chihuahua":
+                        raza51++;
+                        break;
+                    case "Perro salchicha":
+                        raza52++;
+                        break;
+                    case "Teckel":
+                        raza53++;
+                        break;
+                    case "Pequinés":
+                        raza54++;
+                        break;
+                    case "Pinscher mini":
+                        raza55++;
+                        break;
+                    case "Boston Terrier":
+                        raza56++;
+                        break;
+                    case "Scottish Terrier":
+                        raza57++;
+                        break;
+                    case "Basenji":
+                        raza58++;
+                        break;
+                    case "Corgi":
+                        raza59++;
+                        break;
+                    case "Terrier Tibetano":
+                        raza60++;
+                        break;
+                    case "Alabai":
+                        raza61++;
+                        break;
+                    case "Crestado Chino":
+                        raza62++;
+                        break;
+                    case "Chow Chow":
+                        raza63++;
+                        break;
+                    case "Lhasa Apso":
+                        raza64++;
+                        break;
+                    case "Shar Pei":
+                        raza65++;
+                        break;
+                    case "Akita Inu japonés":
+                        raza66++;
+                        break;
+                    case "Chongqing":
+                        raza67++;
+                        break;
+                    case "Bichón Maltés":
+                        raza68++;
+                        break;
+                    case "french poodle":
+                        raza69++;
+                        break;
+                    case "Criollo":
+                        raza70++;
+                        break;
+                    default:
+                        break;
+                } 
+                System.out.println(tblMascotas.getValueAt(i, 5));
+                this.txtRaza1.setText(String.valueOf(raza1));
+//                this.jtxtBaños.setText(String.valueOf(b));
+//                this.jtxtCirugia.setText(String.valueOf(c));
+//                this.jtxtDestartaje.setText(String.valueOf(d));
+//                this.jtxtEcografias.setText(String.valueOf(e));
+//                this.jtxtRadiografias.setText(String.valueOf(r));
+            tblMascotas.repaint();
+            }
+        tblMascotas.repaint();
+        }
+        tblMascotas.repaint();
+    }
+    
+    
+    
+    
+    
+    
+    
     
     /**
      * @param args the command line arguments
@@ -922,7 +1969,52 @@ public class MDIVeterinaria extends javax.swing.JFrame {
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -930,9 +2022,11 @@ public class MDIVeterinaria extends javax.swing.JFrame {
     private javax.swing.JInternalFrame jifListarMascotas;
     private javax.swing.JInternalFrame jifLogin;
     private javax.swing.JInternalFrame jifRegistrarMasota;
+    private javax.swing.JInternalFrame jifTotalRaza;
     private javax.swing.JLabel jlbCodigoMascota;
     private javax.swing.JLabel jlbEspecie;
     private javax.swing.JLabel jlbFecha;
+    private javax.swing.JLabel jlbGatos;
     private javax.swing.JLabel jlbNombreMascota;
     private javax.swing.JLabel jlbRaza;
     private javax.swing.JLabel jlbServicio;
@@ -945,12 +2039,85 @@ public class MDIVeterinaria extends javax.swing.JFrame {
     private javax.swing.JMenu menuInicio;
     private javax.swing.JMenuItem menuListarMascotas;
     private javax.swing.JMenuItem menuSalir;
+    private javax.swing.JMenuItem menuTotalRaza;
     private javax.swing.JTable tblMascotas;
     private javax.swing.JTextField txtCodigoMascota;
     private javax.swing.JPasswordField txtContrasenia;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtNombreMascota;
+    private javax.swing.JTextField txtRaza1;
+    private javax.swing.JTextField txtRaza10;
+    private javax.swing.JTextField txtRaza11;
+    private javax.swing.JTextField txtRaza12;
+    private javax.swing.JTextField txtRaza13;
+    private javax.swing.JTextField txtRaza14;
+    private javax.swing.JTextField txtRaza15;
+    private javax.swing.JTextField txtRaza16;
+    private javax.swing.JTextField txtRaza17;
+    private javax.swing.JTextField txtRaza18;
+    private javax.swing.JTextField txtRaza19;
+    private javax.swing.JTextField txtRaza2;
+    private javax.swing.JTextField txtRaza20;
+    private javax.swing.JTextField txtRaza21;
+    private javax.swing.JTextField txtRaza22;
+    private javax.swing.JTextField txtRaza23;
+    private javax.swing.JTextField txtRaza24;
+    private javax.swing.JTextField txtRaza25;
+    private javax.swing.JTextField txtRaza26;
+    private javax.swing.JTextField txtRaza27;
+    private javax.swing.JTextField txtRaza28;
+    private javax.swing.JTextField txtRaza29;
+    private javax.swing.JTextField txtRaza3;
+    private javax.swing.JTextField txtRaza30;
+    private javax.swing.JTextField txtRaza31;
+    private javax.swing.JTextField txtRaza32;
+    private javax.swing.JTextField txtRaza33;
+    private javax.swing.JTextField txtRaza34;
+    private javax.swing.JTextField txtRaza35;
+    private javax.swing.JTextField txtRaza36;
+    private javax.swing.JTextField txtRaza37;
+    private javax.swing.JTextField txtRaza38;
+    private javax.swing.JTextField txtRaza39;
+    private javax.swing.JTextField txtRaza4;
+    private javax.swing.JTextField txtRaza40;
+    private javax.swing.JTextField txtRaza41;
+    private javax.swing.JTextField txtRaza42;
+    private javax.swing.JTextField txtRaza43;
+    private javax.swing.JTextField txtRaza44;
+    private javax.swing.JTextField txtRaza45;
+    private javax.swing.JTextField txtRaza5;
+    private javax.swing.JTextField txtRaza6;
+    private javax.swing.JTextField txtRaza7;
+    private javax.swing.JTextField txtRaza8;
+    private javax.swing.JTextField txtRaza9;
     // End of variables declaration//GEN-END:variables
 
 }
+
+
+
+//}
+        
+//        DefaultTableModel model= (DefaultTableModel) tblTotalRazaGatos.getModel();
+//        model.getDataVector().removeAllElements();
+//        
+//        for(TotalRaza toraza: controlVeterinaria.getTotalRaza())
+//        {
+//            if(toraza!=null)
+//            {
+//                
+//                for(int i=0; i<fils; i++)
+//                {        
+//                    switch (controlVeterinaria.getRazas()[i].getNombre()) 
+//                    {
+//                            case "Maine Coon":
+//                                Object[] fila = {raza1,toraza.getNombre()};
+//                                model.addRow(fila);
+//                                break;
+//                    }
+//                }
+//            }
+//            
+//        }   
+//        tblTotalRazaGatos.repaint();

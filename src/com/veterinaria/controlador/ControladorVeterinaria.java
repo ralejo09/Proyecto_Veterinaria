@@ -5,6 +5,7 @@
  */
 package com.veterinaria.controlador;
 
+import com.veterinaria.modelo.TotalRaza;
 import com.veterinaria.excepciones.VeterinariaExcepcion;
 import com.veterinaria.modelo.Especie;
 import com.veterinaria.modelo.Raza;
@@ -27,10 +28,12 @@ public class ControladorVeterinaria {
     public static final int NUMERO_MASCOTAS=2000;
     private RegistroServicio[]regServicios;
     private int contadorServicios=0;
+    private int contadorRaza=0;
     private Sexo[] sexos;
     private Especie[] especies;
     private Raza[] razas;
     private Servicio[] servicio;
+    private TotalRaza[] totalRaza;
     
     
     public ControladorVeterinaria() 
@@ -39,15 +42,19 @@ public class ControladorVeterinaria {
         inicializarSexo();
         inicializarEspecie();
         inicializarRaza((byte)1);
+        
+//        inicializarRaza1();
+        
         inicializarServicio();
         inicializarMascotas();
         escribirFichero();
+//        elementosRepetidos(razas,NUMERO_MASCOTAS);
 //        LeerFichero();
     }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     
-    //Arreglos de El Sexo,Especie,Raza,Servicio
+    //Arreglos de El Sexo,Especie,Raza,Servicio total de la raza
     
     private void inicializarSexo()
     {
@@ -157,6 +164,8 @@ public class ControladorVeterinaria {
         servicio[3] = new Servicio((byte)4, "Desparasitacion", 15000);
     }
     
+    
+    
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     //Se inicializa mascota quemada
@@ -164,9 +173,17 @@ public class ControladorVeterinaria {
     private void inicializarMascotas()
     {
 //        servicios[0]= new RegistroServicio("dsf",(double)464 , "jahdas", new Sexo((byte)1, "hembra"), new Especie((byte)2, "gato"), new Raza((byte)2, "persa"),(byte)45);
-        regServicios[0]= new RegistroServicio("2021-12-21", "101", "Bruno", sexos[0], especies[0], razas[1], servicio[1]);
+        regServicios[0]= new RegistroServicio("2021-12-21", "101", "Bruno", sexos[0], especies[0], razas[0], servicio[1]);
         contadorServicios++;
     }
+    
+    
+//    private void inicializarRaza1()
+//    {
+////        Raza r = new Raza((byte)1, "Maine Coon");
+//        totalRaza[0]= new TotalRaza((byte)1,razas[0].getNombre().toString());
+//        contadorRaza++;
+//    }
     
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
     
@@ -258,10 +275,31 @@ public class ControladorVeterinaria {
         }
         
     }
-     
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////    
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
+    public  static int elementosRepetidos(int[]array, int elemento)
+    {
+        int repetidos=0;
+        for (int i=0; i < array.length; i++)
+        {
+            if (array[i]==elemento)
+            {
+                repetidos++;
+            }
+        }
+        return repetidos;
+    }   
+    
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public TotalRaza[] getTotalRaza() {
+        return totalRaza;
+    }
+
+
     //Guetters and Setters
+    public void setTotalRaza(TotalRaza[] totalRaza) {
+        this.totalRaza = totalRaza;
+    }
 
     public RegistroServicio[] getRegServicios() {
         return regServicios;

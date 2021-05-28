@@ -22,6 +22,13 @@ public class Mascota implements Serializable{
     
 /////////////////////////////////////////////////////////////////////
 
+    public Mascota(String codigoMascota, Raza raza) {
+        this.codigoMascota = codigoMascota;
+        this.raza = raza;
+    }
+
+//    
+
     
     
     public Mascota(String codigoMascota, String nombre, Sexo sexo, Especie especie, Raza raza, Servicio servicio) {
