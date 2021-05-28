@@ -722,7 +722,7 @@ public class MDIVeterinaria extends javax.swing.JFrame {
 
         if (tblMascotas.getRowCount()!=0)
         {
-            //         servicio[0] = new Servicio((byte)1, "Baño", 35000);
+            //        servicio[0] = new Servicio((byte)1, "Baño", 35000);
             //        servicio[1] = new Servicio((byte)2, "Consulta Medica", 40000);
             //        servicio[2] = new Servicio((byte)3, "Estetica", 50000);
             //        servicio[3] = new Servicio((byte)4, "Desparasitacion", 15000);
@@ -735,22 +735,23 @@ public class MDIVeterinaria extends javax.swing.JFrame {
             int fils = tblMascotas.getRowCount();
             for(int i=0; i<fils; i++) {
 
-                if(tblMascotas.getValueAt(i, 6).equals("Baño"))
+                if(controlVeterinaria.getRegServicios()[i].getServicio().getNombreServicio().equals("Baño"))
                 {
                     ser1++;
                 }
-                else if(tblMascotas.getValueAt(i, 6).equals("Consulta Medica"))
+                else if(controlVeterinaria.getRegServicios()[i].getServicio().getNombreServicio().equals("Consulta Medica"))
                 {
                     ser2++;
                 }
-                else if(tblMascotas.getValueAt(i, 6).equals("Estetica"))
+                else if(controlVeterinaria.getRegServicios()[i].getServicio().getNombreServicio().equals("Estetica"))
                 {
                     ser3++;
                 }
-                else if(tblMascotas.getValueAt(i, 6).equals("Desparasitacion"))
+                else if(controlVeterinaria.getRegServicios()[i].getServicio().getNombreServicio().equals("Desparasitacion"))
                 {
                     ser4++;
                 }
+                
                 System.out.println(tblMascotas.getValueAt(i, 6));
             }
 
@@ -758,16 +759,10 @@ public class MDIVeterinaria extends javax.swing.JFrame {
 
                 DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
-                for(int i = 0; i < tblMascotas.getRowCount(); i++)
-
                 dataset.setValue(ser1, "Servicio", controlVeterinaria.getServicio()[0].getNombreServicio());
                 dataset.setValue(ser2, "Servicio", controlVeterinaria.getServicio()[1].getNombreServicio());
                 dataset.setValue(ser3, "Servicio", controlVeterinaria.getServicio()[2].getNombreServicio());
                 dataset.setValue(ser4, "Servicio", controlVeterinaria.getServicio()[3].getNombreServicio());
-                //            dataset.setValue(controlVeterinaria.getParticipantes()[1].getPuntuacion(), "Puntaje", controlVeterinaria.getParticipantes()[1].getNombre());
-                //            dataset.setValue(controlVeterinaria.getParticipantes()[2].getPuntuacion(), "Puntaje", controlVeterinaria.getParticipantes()[2].getNombre());
-                //            dataset.setValue(controlVeterinaria.getParticipantes()[3].getPuntuacion(), "Puntaje", controlVeterinaria.getParticipantes()[3].getNombre());
-                //            dataset.setValue(controlVeterinaria.getParticipantes()[4].getPuntuacion(), "Puntaje", controlVeterinaria.getParticipantes()[4].getNombre());
                 JFreeChart diagramaServicio = ChartFactory.createBarChart("Gráfica Servicios", "Nombre Servicio", "Cantidad", dataset, PlotOrientation.VERTICAL, false, true, false);
                 CategoryPlot p = diagramaServicio.getCategoryPlot();
                 p.setRangeGridlinePaint(Color.BLUE);
@@ -775,7 +770,7 @@ public class MDIVeterinaria extends javax.swing.JFrame {
                 pantalla.setVisible(true);
                 pantalla.setSize(500, 500);
             } else {
-                JOptionPane.showMessageDialog(null, "No se ha agregado todos los participantes");
+                
             }
         }
         else
